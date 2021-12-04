@@ -8,10 +8,10 @@ def get_values(day):
     }
     resp = requests.get(
         f'https://adventofcode.com/2021/day/{day}/input', cookies=cookies)
-    strValues = resp.text
+    str_values = resp.text
 
     with open(f'input-day-{day}.txt', 'w') as f:
-        f.write(strValues)
+        f.write(str_values)
 
 
 def read_input(filename):
