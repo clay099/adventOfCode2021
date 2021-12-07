@@ -25,3 +25,7 @@ def read_input(filename):
         get_values(day)
         with open(filename) as f:
             return [l.strip() for l in f.readlines() if l.strip() != '']
+
+
+def convert_string_list_to_int(list):
+    return [int(value) for value in list[0].split(',')]
