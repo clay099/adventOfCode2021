@@ -64,6 +64,7 @@ def get_other_entries(sorted_signals, solved_values):
                     solved_values[0] = sorted_signal
                 else:
                     solved_values[6] = sorted_signal
+
         # options include 2,3 & 5
         elif sorted_signals_len == 5:
             if get_three(sorted_signal, solved_values):
