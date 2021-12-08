@@ -54,18 +54,9 @@ def get_other_entries(sorted_signals, solved_values):
     for signal in sorted_signals:
         sorted_signal = ''.join(sorted(signal))
         sorted_signals_len = len(sorted_signal)
-        # options include 2,3 & 5
-        if sorted_signals_len == 5:
-            if get_three(sorted_signal, solved_values):
-                solved_values[3] = sorted_signal
-            else:
-                if get_five(sorted_signal, solved_values):
-                    solved_values[5] = sorted_signal
-                else:
-                    solved_values[2] = sorted_signal
 
         # options include 0,6 & 9
-        elif sorted_signals_len == 6:
+        if sorted_signals_len == 6:
             if get_nine(sorted_signal, solved_values):
                 solved_values[9] = sorted_signal
             else:
@@ -73,6 +64,15 @@ def get_other_entries(sorted_signals, solved_values):
                     solved_values[0] = sorted_signal
                 else:
                     solved_values[6] = sorted_signal
+        # options include 2,3 & 5
+        elif sorted_signals_len == 5:
+            if get_three(sorted_signal, solved_values):
+                solved_values[3] = sorted_signal
+            else:
+                if get_five(sorted_signal, solved_values):
+                    solved_values[5] = sorted_signal
+                else:
+                    solved_values[2] = sorted_signal
 
         # we don't care about other then values as we have already mapped them
 
