@@ -1,5 +1,5 @@
 import requests
-import datetime
+import re
 
 
 def get_values(day):
@@ -20,9 +20,8 @@ def read_input(filename):
         with open(filename) as f:
             return [l.strip() for l in f.readlines() if l.strip() != '']
     except FileNotFoundError:
-        date = datetime.datetime.utcnow()
-        day = date.strftime('%d').lstrip('0')
-        get_values(day)
+        day = re.findall('\d+', filename)
+        get_values(day[0])
         with open(filename) as f:
             return [l.strip() for l in f.readlines() if l.strip() != '']
 
