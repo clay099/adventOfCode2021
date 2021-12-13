@@ -54,18 +54,23 @@ for cords in f_sec:
 def fold_y(passed_paper, fold_spot):
     bottom = passed_paper[fold_spot+1:]
     top = passed_paper[0:fold_spot]
-    folded_paper = [[cell for cell in row]for row in top]
+    folded_paper = [
+        ['.' for i in range(len(passed_paper[0]))] for j in range(max(len(passed_paper)-fold_spot - 1, fold_spot))]
+    for i, row in enumerate(top):
+        for j, cell in enumerate(row):
+            if cell == MARK:
+                folded_paper[i][j] = MARK
     for i, row in enumerate(bottom):
         for j, cell in enumerate(row):
             if cell == MARK:
                 folded_paper[len(folded_paper)-1-i][j] = MARK
+
     return folded_paper
 
 
 def fold_x(passed_paper, fold_spot):
-
     folded_paper = [
-        ['.' for i in range(max(fold_spot, len(passed_paper[0])-fold_spot))] for j in range(len(passed_paper))]
+        ['.' for i in range(max(fold_spot, len(passed_paper[0])-fold_spot - 1))] for j in range(len(passed_paper))]
     for i, row in enumerate(passed_paper):
         left = row[0:fold_spot]
         right = row[fold_spot+1:]
@@ -97,15 +102,16 @@ def part1():
     get_total(folded_paper)
 
 
-def test():
+def part2():
     folded_paper = paper
     for fold in s_sec:
         if fold[0] == 'x':
             folded_paper = fold_x(folded_paper, fold[1])
         else:
             folded_paper = fold_y(folded_paper, fold[1])
-            print_paper(folded_paper)
-    get_total(folded_paper)
+    for row in folded_paper:
+        print(''.join(['#' if cell == MARK else ' ' for cell in row[::-1]]))
 
 
 part1()
+part2()
