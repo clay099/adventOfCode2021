@@ -24,7 +24,7 @@ test_input = ['NNCB',
 
 result = defaultdict(int)
 for i in range(len(input[0])-1):
-    result[input[0][i:i+2]] = 1
+    result[input[0][i:i+2]] += 1
 instrutions = [[chars for chars in values.split(
     ' -> ')]for values in input[1:]]
 
